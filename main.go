@@ -36,4 +36,12 @@ func main() {
 
 	fmt.Println("But What About User", user1)
 
+	isAdult := user1.IsAdult(user1.Age)
+
+	if isAdult {
+		fmt.Println("User is Adult")
+	} else {
+		fmt.Println("User is not Adult")
+	}
+
 }

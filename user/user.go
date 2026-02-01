@@ -15,3 +15,10 @@ func NewUser(name string, email string, password string, age int) *User {
 		Age:      age,
 	}
 }
+
+func (u User) IsAdult(age int) bool {
+	if age >= 18 {
+		return true
+	}
+	return false
+}
