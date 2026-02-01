@@ -1,29 +1,26 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
 
-type user struct {
-	name     string
-	email    string
-	password string
-	age      int
-}
+	"example.com/struct/user"
+)
 
 func main() {
-	var u1 user
+	var u1 user.User
 
-	u1.age = 22
-	u1.email = "mrvikash@example.com"
-	u1.password = "password@123"
-	u1.name = "Vikash Gupta"
+	u1.Age = 22
+	u1.Email = "mrvikash@example.com"
+	u1.Password = "password@123"
+	u1.Name = "Vikash Gupta"
 
 	fmt.Println("The First User is: ", u1)
 
-	var u2 user
-	u2.age = 25
-	u2.email = "mrankur@example.com"
-	u2.password = "password@2234"
-	u2.name = "Ankur Gupta"
+	var u2 user.User
+	u2.Age = 25
+	u2.Email = "mrankur@example.com"
+	u2.Password = "password@2234"
+	u2.Name = "Ankur Gupta"
 
 	fmt.Println("The Second User is: ", u2)
 }
