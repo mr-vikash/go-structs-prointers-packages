@@ -24,7 +24,7 @@ func main() {
 
 	// fmt.Println("The Second User is: ", u2)
 
-	user1 := user.NewUser("Vikash Gupta", "mrvikash@example.com", "password@1234", 22)
+	user1, _ := user.NewUser("Vikash Gupta", "mrvikash@example.com", "password@1234", 22)
 
 	fmt.Println("Before Updating ", user1)
 	user1.Age = 23
@@ -42,6 +42,11 @@ func main() {
 		fmt.Println("User is Adult")
 	} else {
 		fmt.Println("User is not Adult")
+	}
+
+	user1, err := user.NewUser("", "", "", 1)
+	if err != nil {
+		fmt.Println("Something went wrong: ", err)
 	}
 
 }
