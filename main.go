@@ -1,13 +1,12 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
-	"os"
-	"strings"
-
-	"example.com/struct/note"
+	"example.com/struct/goroutine"
 )
+
+type saver interface {
+	Save() error
+}
 
 func main() {
 	// var u1 user.User
@@ -52,29 +51,52 @@ func main() {
 	// 	fmt.Println("Something went wrong: ", err)
 	// }
 
-	createNote()
+	// saveNoteData()
 
+	// saveTodoData()
+
+	done := make(chan bool)
+
+	go goroutine.Greet("How Are You ?", done)
+	go goroutine.SlowGreet("Good Morning ", done)
+	// go goroutine.Greet("I am Fine")
+	<-done
+	<-done
 }
 
-func createNote() {
-	fmt.Println("You can create your note Here")
-	title := getUserInput("Please Enter the Title")
-	fmt.Println()
-	content := getUserInput("Please Enter the Content")
+// func saveNoteData() {
+// 	fmt.Println("You can create your note Here")
+// 	title := getUserInput("Please Enter the Title")
+// 	fmt.Println()
+// 	content := getUserInput("Please Enter the Content")
 
-	userNote, err := note.New(title, content)
+// 	userNote, err := note.New(title, content)
 
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
+// 	if err != nil {
+// 		fmt.Println(err)
+// 		return
+// 	}
 
-	userNote.CreateFile()
-}
+// 	userNote.CreateFile()
+// }
 
-func getUserInput(prompt string) string {
-	fmt.Print(prompt + ":")
-	reader := bufio.NewReader(os.Stdin)
-	input, _ := reader.ReadString('\n')
-	return strings.TrimSpace(input)
-}
+// func saveTodoData() {
+// 	fmt.Println("You can create your note Here")
+// 	content := getUserInput("Please Enter the Todo Content")
+
+// 	todoContent, err := todo.New(content)
+
+// 	if err != nil {
+// 		fmt.Println(err)
+// 		return
+// 	}
+
+// 	todoContent.Save()
+// }
+
+// func getUserInput(prompt string) string {
+// 	fmt.Print(prompt + ":")
+// 	reader := bufio.NewReader(os.Stdin)
+// 	input, _ := reader.ReadString('\n')
+// 	return strings.TrimSpace(input)
+// }
